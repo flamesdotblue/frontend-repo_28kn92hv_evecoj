@@ -1,28 +1,39 @@
-import { useState } from 'react'
+import React from 'react';
+import Sidebar from './components/Sidebar';
+import HeroCover from './components/HeroCover';
+import NotesPanel from './components/NotesPanel';
+import QuickActions from './components/QuickActions';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen w-full bg-neutral-950 text-white">
+      {/* Page container */}
+      <div className="mx-auto max-w-7xl px-4 py-6 md:py-8">
+        {/* Hero Cover */}
+        <HeroCover />
+
+        {/* Main content area */}
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-[16rem_1fr]">
+          {/* Sidebar */}
+          <Sidebar />
+
+          {/* Content column */}
+          <div className="flex flex-col gap-6">
+            {/* Notes + Quick Actions */}
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.5fr_1fr]">
+              <NotesPanel />
+              <QuickActions />
+            </div>
+
+            {/* Footer hint */}
+            <div className="rounded-2xl border border-white/10 bg-neutral-900/60 p-4 text-sm text-white/70">
+              Tip: When connected to the API, an interceptor will attach your Firebase ID Token to each secure request.
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
